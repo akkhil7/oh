@@ -1,6 +1,5 @@
 function isNumber(ch) {
-  const charCode = ch.charCodeAt(0)
-  return (charCode > 47 && charCode < 58)
+  return ch * 1 > -1
 }
 
 function toInt(str) {
@@ -8,12 +7,11 @@ function toInt(str) {
   if (typeof str !== 'string') throw new Error('Invalid input type')
 
   let value = 0
-  const chars = str.split('')
-  const isNegative = chars[0] === '-'
+  const isNegative = str[0] === '-'
 
-  for (let i = (isNegative ? 1 : 0); i < chars.length; i++) {
-    if (isNumber(chars[i])) {
-      value = (value * 10) + chars[i].charCodeAt(0) - 48
+  for (let i = (isNegative ? 1 : 0); i < str.length; i++) {
+    if (isNumber(str[i])) {
+      value = (value * 10) + str[i] * 1
     } else break
   }
 
